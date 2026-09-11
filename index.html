@@ -129,8 +129,7 @@
   nav a:hover::before, nav a.current::before{width:28px;opacity:1}
 
   .side-foot{
-    margin-top:auto;
-    padding-top:34px;
+    margin-top:30px;
     font-family:var(--sans);
     font-size:0.72rem;
     color:var(--ink-soft);
@@ -196,11 +195,12 @@
   /* foto junto al texto de About */
   .about-top{
     display:grid;
-    grid-template-columns:172px minmax(0,1fr);
-    gap:30px;
+    grid-template-columns:210px minmax(0,1fr);
+    gap:32px;
     align-items:start;
-    margin-bottom:8px;
+    margin-bottom:14px;
   }
+  .about-top .last{margin-bottom:0}
   .about-top img{
     display:block;
     width:100%;
@@ -416,10 +416,11 @@
 
       <div class="about-top">
         <img src="JC.jpg" alt="Jorge Castillejos" onerror="this.style.display='none'">
-        <p class="lede">I work in functional analysis, operator algebras and abstract harmonic analysis, mainly on the structure and classification of C*-algebras.</p>
+        <div>
+          <p class="lede">I work in functional analysis, operator algebras and abstract harmonic analysis, mainly on the structure and classification of C*-algebras.</p>
+          <p class="last">I am a Research Associate Professor at the Institute of Mathematics, Unidad Cuernavaca, UNAM. I obtained my PhD in Mathematics at the <a href="http://www.gla.ac.uk/">University of Glasgow</a> in 2016. Much of my recent work concerns nuclear dimension, uniform property Gamma and the Toms–Winter conjecture, and more recently tracially complete C*-algebras.</p>
+        </div>
       </div>
-
-      <p>I am a Research Associate Professor at the Institute of Mathematics, Unidad Cuernavaca, UNAM. I obtained my PhD in Mathematics at the <a href="http://www.gla.ac.uk/">University of Glasgow</a> in 2016. Much of my recent work concerns nuclear dimension, uniform property Gamma and the Toms–Winter conjecture, and more recently tracially complete C*-algebras.</p>
 
       <h3>Elsewhere</h3>
       <ul class="links">
