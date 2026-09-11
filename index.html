@@ -170,19 +170,20 @@
   }
   h3:first-of-type{margin-top:34px}
 
-  /* pinturas: banda por sección */
-  .figure{margin:0 0 32px;display:table}
-  .figure .credit{display:table-caption;caption-side:bottom}
-  .band{
+  /* imagen que cambia con la sección */
+  .sidefig{
+    margin:26px 0 0;
+    max-width:250px;
+  }
+  .sidefig img{
     display:block;
-    max-width:100%;
-    max-height:430px;
-    width:auto;
+    width:100%;
     height:auto;
     border:1px solid var(--rule);
+    transition:opacity .28s ease;
   }
-  .credit{
-    display:block;
+  .sidefig img.swapping{opacity:0}
+  .sidefig figcaption{
     font-family:var(--sans);
     font-size:0.72rem;
     line-height:1.5;
@@ -190,24 +191,9 @@
     margin-top:8px;
     padding-left:10px;
     border-left:2px solid var(--hue);
+    transition:border-color .28s ease;
+    min-height:1em;
   }
-
-  /* foto junto al texto de About */
-  .about-top{
-    display:grid;
-    grid-template-columns:210px minmax(0,1fr);
-    gap:32px;
-    align-items:start;
-    margin-bottom:14px;
-  }
-  .about-top .last{margin-bottom:0}
-  .about-top img{
-    display:block;
-    width:100%;
-    height:auto;
-    border:1px solid var(--rule);
-  }
-  .about-top .lede{margin-top:-6px}
 
   .lede{
     font-size:1.16rem;
@@ -355,9 +341,7 @@
     nav a{padding:4px 0}
     .side-foot{display:none}
     main{padding:44px 0 90px}
-    .about-top{grid-template-columns:1fr;gap:20px}
-    .about-top img{max-width:210px}
-    .about-top .lede{margin-top:0}
+    .sidefig{display:none}
     .yr{grid-template-columns:1fr;gap:6px}
     .yr dt{padding-top:0}
   }
@@ -405,6 +389,11 @@
       </ol>
     </nav>
 
+    <figure class="sidefig">
+      <img id="sidepic" src="JC.jpg" alt="">
+      <figcaption id="sidecap"></figcaption>
+    </figure>
+
     <p class="side-foot">Cuernavaca, Morelos, Mexico</p>
   </aside>
 
@@ -414,13 +403,9 @@
     <section id="about">
       <h2>About</h2><div class="rule"></div>
 
-      <div class="about-top">
-        <img src="JC.jpg" alt="Jorge Castillejos" onerror="this.style.display='none'">
-        <div>
-          <p class="lede">I work in functional analysis, operator algebras and abstract harmonic analysis, mainly on the structure and classification of C*-algebras.</p>
-          <p class="last">I am a Research Associate Professor at the Institute of Mathematics, Unidad Cuernavaca, UNAM. I obtained my PhD in Mathematics at the <a href="http://www.gla.ac.uk/">University of Glasgow</a> in 2016. Much of my recent work concerns nuclear dimension, uniform property Gamma and the Toms–Winter conjecture, and more recently tracially complete C*-algebras.</p>
-        </div>
-      </div>
+      <p class="lede">I work in functional analysis, operator algebras and abstract harmonic analysis, mainly on the structure and classification of C*-algebras.</p>
+
+      <p>I am a Research Associate Professor at the Institute of Mathematics, Unidad Cuernavaca, UNAM. I obtained my PhD in Mathematics at the <a href="http://www.gla.ac.uk/">University of Glasgow</a> in 2016. Much of my recent work concerns nuclear dimension, uniform property Gamma and the Toms–Winter conjecture, and more recently tracially complete C*-algebras.</p>
 
       <h3>Elsewhere</h3>
       <ul class="links">
@@ -434,11 +419,6 @@
     <!-- ============ RESEARCH ============ -->
     <section id="research">
       <h2>Research</h2><div class="rule"></div>
-
-      <figure class="figure">
-        <img class="band" src="siq.jpg" alt="" onerror="this.parentNode.style.display='none'">
-        <figcaption class="credit">David Alfaro Siqueiros</figcaption>
-      </figure>
 
       <h3>Publications and preprints</h3>
       <ul class="pubs">
@@ -576,11 +556,6 @@
     <section id="teaching">
       <h2>Teaching</h2><div class="rule"></div>
 
-      <figure class="figure">
-        <img class="band" src="canti.jpg" alt="" onerror="this.parentNode.style.display='none'">
-        <figcaption class="credit">Cantinflas</figcaption>
-      </figure>
-
       <h3>Courses</h3>
       <dl class="years">
         <div class="yr"><dt>2026–2027</dt><dd><ul>
@@ -648,10 +623,6 @@
 
       <h3>Supervision</h3>
 
-      <figure class="figure">
-        <img class="band" src="sup.jpg" alt="" onerror="this.parentNode.style.display='none'">
-      </figure>
-
       <dl class="years">
         <div class="yr"><dt>2026</dt><dd><ul>
           <li>Kohei Miyazaki <span class="where">(PhD)</span></li>
@@ -676,12 +647,6 @@
     <!-- ============ EVENTS ============ -->
     <section id="events">
       <h2>Events</h2><div class="rule"></div>
-
-      <figure class="figure">
-        <img class="band" src="negroc.jpg" alt="" onerror="this.parentNode.style.display='none'">
-        <figcaption class="credit">Negro cósmico</figcaption>
-      </figure>
-
       <p>Conferences, workshops and schools I have organised or taken part in.</p>
 
       <ul class="plain">
@@ -731,17 +696,48 @@
 </div>
 
 <script>
-  // Marca en la navegación la sección visible.
-  const links = [...document.querySelectorAll('nav a')];
-  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const art = {
+    about:    { src:"JC.jpg",     cap:"",                       hue:"#2B5F75" },
+    research: { src:"siq.jpg",    cap:"David Alfaro Siqueiros", hue:"#7A3B5E" },
+    teaching: { src:"canti.jpg",  cap:"Cantinflas",             hue:"#3A6B4A" },
+    events:   { src:"negroc.jpg", cap:"Negro cósmico",          hue:"#57499B" }
+  };
+
+  const links  = [...document.querySelectorAll('nav a')];
+  const map    = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const fig    = document.querySelector('.sidefig');
+  const pic    = document.getElementById('sidepic');
+  const cap    = document.getElementById('sidecap');
+  let current  = 'about';
+
+  // Precarga para que el cambio sea instantáneo.
+  Object.values(art).forEach(a => { const i = new Image(); i.src = a.src; });
+
+  function show(id){
+    const a = art[id];
+    if (!a || id === current) return;
+    current = id;
+    fig.style.setProperty('--hue', a.hue);
+    pic.classList.add('swapping');
+    setTimeout(() => {
+      pic.src = a.src;
+      cap.textContent = a.cap;
+      pic.classList.remove('swapping');
+    }, 280);
+  }
+
+  fig.style.setProperty('--hue', art.about.hue);
+
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         links.forEach(a => a.classList.remove('current'));
         map.get(e.target.id)?.classList.add('current');
+        show(e.target.id);
       }
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
+
   document.querySelectorAll('section').forEach(s => io.observe(s));
 </script>
 
