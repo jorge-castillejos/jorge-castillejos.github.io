@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jorge Castillejos</title>
+<meta name="description" content="Jorge Castillejos — Research Associate Professor, Institute of Mathematics (Unidad Cuernavaca), UNAM. Operator algebras and the classification of C*-algebras.">
+<link rel="canonical" href="https://jorge-castillejos.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://jorge-castillejos.github.io/">
+<meta property="og:title" content="Jorge Castillejos">
+<meta property="og:description" content="Research Associate Professor at the Institute of Mathematics, Unidad Cuernavaca, UNAM. Operator algebras and the classification of C*-algebras.">
+<meta property="og:image" content="https://jorge-castillejos.github.io/foto.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF7;
+    --ink:#191C22;
+    --ink-soft:#5B626B;
+    --rule:#E0DED7;
+    --rule-soft:#EDEBE5;
+
+    --c-about:#2B5F75;
+    --c-research:#7A3B5E;
+    --c-teaching:#3A6B4A;
+    --c-events:#57499B;
+
+    --serif:"Spectral", Georgia, serif;
+    --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+
+    --hue:var(--c-about);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.6;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--hue);outline-offset:3px;border-radius:2px}
+
+  /* ---------- layout ---------- */
+  .shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+    display:grid;
+    grid-template-columns:300px minmax(0,1fr);
+    gap:72px;
+    align-items:start;
+  }
+
+  /* ---------- sidebar ---------- */
+  .side{
+    position:sticky;
+    top:0;
+    padding:64px 0 48px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .name{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:2.35rem;
+    line-height:1.02;
+    letter-spacing:-0.021em;
+    margin:0 0 18px;
+  }
+  .name span{display:block}
+
+  .affil{
+    font-size:0.96rem;
+    line-height:1.5;
+    color:var(--ink-soft);
+    margin:0 0 22px;
+    max-width:26ch;
+  }
+  .affil a{
+    border-bottom:1px solid var(--rule);
+    color:var(--ink);
+  }
+  .affil a:hover{border-bottom-color:var(--hue)}
+
+  .contact{
+    font-family:var(--sans);
+    font-size:0.8rem;
+    line-height:1.9;
+    color:var(--ink-soft);
+    margin-bottom:30px;
+  }
+  .contact a{color:var(--ink);border-bottom:1px solid var(--rule)}
+  .contact a:hover{border-bottom-color:var(--hue)}
+
+  nav{border-top:1px solid var(--rule);padding-top:14px}
+  nav ol{list-style:none;margin:0;padding:0}
+  nav li{margin:0}
+  nav a{
+    font-family:var(--sans);
+    font-size:0.86rem;
+    font-weight:500;
+    letter-spacing:0.005em;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:6px 0;
+    color:var(--ink-soft);
+    transition:color .15s ease;
+  }
+  nav a::before{
+    content:"";
+    width:16px;height:2px;
+    background:var(--dot);
+    opacity:.45;
+    transition:width .15s ease, opacity .15s ease;
+  }
+  nav a:hover, nav a.current{color:var(--ink)}
+  nav a:hover::before, nav a.current::before{width:28px;opacity:1}
+
+  .side-foot{
+    margin-top:auto;
+    padding-top:34px;
+    font-family:var(--sans);
+    font-size:0.72rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- main ---------- */
+  main{padding:64px 0 120px;max-width:70ch}
+
+  section{padding-top:14px;margin-bottom:76px}
+  section:last-child{margin-bottom:0}
+
+  #about{--hue:var(--c-about)}
+  #research{--hue:var(--c-research)}
+  #teaching{--hue:var(--c-teaching)}
+  #events{--hue:var(--c-events)}
+
+  h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:1.75rem;
+    letter-spacing:-0.012em;
+    margin:0 0 6px;
+    scroll-margin-top:40px;
+  }
+  h2 + .rule{
+    width:46px;height:3px;
+    background:var(--hue);
+    margin-bottom:30px;
+  }
+
+  h3{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:0.86rem;
+    letter-spacing:0.01em;
+    color:var(--ink);
+    margin:44px 0 16px;
+  }
+  h3:first-of-type{margin-top:34px}
+
+  /* pinturas: banda por sección */
+  .figure{margin:0 0 32px}
+  .band{
+    display:block;
+    width:100%;
+    height:clamp(130px,19vw,185px);
+    object-fit:cover;
+    object-position:center;
+    background:var(--rule-soft);
+  }
+  .credit{
+    display:block;
+    font-family:var(--sans);
+    font-size:0.72rem;
+    line-height:1.5;
+    color:var(--ink-soft);
+    margin-top:8px;
+    padding-left:10px;
+    border-left:2px solid var(--hue);
+  }
+
+  /* foto junto al texto de About */
+  .about-top{
+    display:grid;
+    grid-template-columns:172px minmax(0,1fr);
+    gap:30px;
+    align-items:start;
+    margin-bottom:8px;
+  }
+  .about-top img{
+    display:block;
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    background:var(--rule-soft);
+  }
+  .about-top .lede{margin-top:-6px}
+
+  .lede{
+    font-size:1.16rem;
+    line-height:1.66;
+    margin:0 0 20px;
+  }
+  p{margin:0 0 18px}
+  main p a{
+    border-bottom:1px solid var(--rule);
+    transition:border-color .15s ease;
+  }
+  main p a:hover{border-bottom-color:var(--hue)}
+
+  /* publications */
+  .pubs{list-style:none;margin:0;padding:0}
+  .pubs li{
+    padding:15px 0 15px 20px;
+    border-top:1px solid var(--rule-soft);
+    position:relative;
+  }
+  .pubs li:first-child{border-top:1px solid var(--rule)}
+  .pubs li::before{
+    content:"";
+    position:absolute;
+    left:0;top:24px;
+    width:8px;height:2px;
+    background:var(--hue);
+    opacity:.6;
+  }
+  .title{display:block;line-height:1.45}
+  .meta{
+    display:block;
+    font-family:var(--sans);
+    font-size:0.79rem;
+    line-height:1.7;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+  .meta a{
+    color:var(--hue);
+    border-bottom:1px solid transparent;
+    font-weight:500;
+  }
+  .meta a:hover{border-bottom-color:var(--hue)}
+
+  /* simple lists */
+  .plain{list-style:none;margin:0 0 6px;padding:0}
+  .plain li{padding:5px 0 5px 20px;position:relative;line-height:1.5}
+  .plain li::before{
+    content:"";
+    position:absolute;left:0;top:14px;
+    width:8px;height:2px;background:var(--hue);opacity:.45;
+  }
+  .plain a{border-bottom:1px solid var(--rule)}
+  .plain a:hover{border-bottom-color:var(--hue)}
+  .plain .where{color:var(--ink-soft);font-size:0.94rem}
+
+  /* year groups */
+  .years{margin:0;padding:0}
+  .yr{
+    display:grid;
+    grid-template-columns:96px minmax(0,1fr);
+    gap:20px;
+    padding:16px 0;
+    border-top:1px solid var(--rule-soft);
+  }
+  .yr:first-of-type{border-top:1px solid var(--rule)}
+  .yr dt{
+    font-family:var(--sans);
+    font-size:0.79rem;
+    font-weight:500;
+    color:var(--ink-soft);
+    padding-top:4px;
+  }
+  .yr dd{margin:0}
+  .yr ul{list-style:none;margin:0;padding:0}
+  .yr li{padding:3px 0;line-height:1.5}
+  .yr a{color:var(--hue);border-bottom:1px solid transparent;font-family:var(--sans);font-size:0.82rem;font-weight:500}
+  .yr a:hover{border-bottom-color:var(--hue)}
+
+  /* links block */
+  .links{list-style:none;margin:0;padding:0}
+  .links li{padding:9px 0;border-top:1px solid var(--rule-soft)}
+  .links li:first-child{border-top:1px solid var(--rule)}
+  .links a{display:block;line-height:1.4}
+  .links a:hover .lnk{border-bottom-color:var(--hue)}
+  .lnk{border-bottom:1px solid var(--rule)}
+  .links .host{
+    display:block;
+    font-family:var(--sans);
+    font-size:0.76rem;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  /* collapsible */
+  details{margin-top:14px}
+  summary{
+    font-family:var(--sans);
+    font-size:0.82rem;
+    font-weight:500;
+    color:var(--hue);
+    cursor:pointer;
+    padding:9px 0;
+    border-top:1px solid var(--rule);
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::before{
+    content:"+";
+    font-size:1rem;
+    line-height:1;
+    width:12px;
+  }
+  details[open] summary::before{content:"–"}
+  summary:focus-visible{outline:2px solid var(--hue);outline-offset:3px}
+  .talks{list-style:none;margin:10px 0 0;padding:0}
+  .talks li{
+    padding:9px 0;
+    border-top:1px solid var(--rule-soft);
+    font-size:0.97rem;
+    line-height:1.5;
+  }
+  .talks .where{color:var(--ink-soft)}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .shell{
+      grid-template-columns:1fr;
+      gap:0;
+      padding:0 24px;
+    }
+    .side{
+      position:static;
+      min-height:0;
+      padding:44px 0 30px;
+      border-bottom:1px solid var(--rule);
+    }
+    .name{font-size:2.1rem}
+    .affil{max-width:none}
+    nav ol{display:flex;flex-wrap:wrap;gap:0 22px}
+    nav a{padding:4px 0}
+    .side-foot{display:none}
+    main{padding:44px 0 90px}
+    .about-top{grid-template-columns:1fr;gap:20px}
+    .about-top img{max-width:210px}
+    .about-top .lede{margin-top:0}
+    .yr{grid-template-columns:1fr;gap:6px}
+    .yr dt{padding-top:0}
+  }
+  @media (max-width:560px){
+    body{font-size:16px}
+    .lede{font-size:1.08rem}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;scroll-behavior:auto !important}
+  }
+  html{scroll-behavior:smooth}
+
+  @media print{
+    .side{position:static;min-height:0}
+    nav,details{display:none}
+    body{background:#fff}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <aside class="side">
+    <h1 class="name"><span>Jorge</span><span>Castillejos</span></h1>
+
+    <p class="affil">Research Associate Professor,
+      <a href="https://www.matcuer.unam.mx/">Institute of Mathematics, Unidad Cuernavaca</a>,
+      <a href="https://www.unam.mx/">UNAM</a>.</p>
+
+    <div class="contact">
+      <a href="mailto:jorge.castillejos@im.unam.mx">jorge.castillejos@im.unam.mx</a><br>
+      <a href="https://drive.google.com/file/d/1ZO1vR3h2UXoCNT59gcl-FhXp2e_H1H5f/view?usp=sharing">Curriculum vitae (PDF)</a><br>
+      <a href="https://arxiv.org/a/castillejos_j_1.html">arXiv</a> ·
+      <a href="https://scholar.google.com/citations?user=M5csqIIAAAAJ&hl=en&oi=ao">Google Scholar</a>
+    </div>
+
+    <nav aria-label="Sections">
+      <ol>
+        <li><a href="#about"    style="--dot:var(--c-about)">About</a></li>
+        <li><a href="#research" style="--dot:var(--c-research)">Research</a></li>
+        <li><a href="#teaching" style="--dot:var(--c-teaching)">Teaching</a></li>
+        <li><a href="#events"   style="--dot:var(--c-events)">Events</a></li>
+      </ol>
+    </nav>
+
+    <p class="side-foot">Cuernavaca, Morelos, Mexico</p>
+  </aside>
+
+  <main>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+      <h2>About</h2><div class="rule"></div>
+
+      <div class="about-top">
+        <img src="foto.jpg" alt="Jorge Castillejos" onerror="this.style.display='none'">
+        <p class="lede">I work in functional analysis, operator algebras and abstract harmonic analysis, mainly on the structure and classification of C*-algebras.</p>
+      </div>
+
+      <p>I am a Research Associate Professor at the Institute of Mathematics, Unidad Cuernavaca, UNAM. I obtained my PhD in Mathematics at the <a href="http://www.gla.ac.uk/">University of Glasgow</a> in 2016. Much of my recent work concerns nuclear dimension, uniform property Gamma and the Toms–Winter conjecture, and more recently tracially complete C*-algebras.</p>
+
+      <h3>Elsewhere</h3>
+      <ul class="links">
+        <li><a href="https://tfrancisco-ciencias.github.io/SANC/"><span class="lnk">Seminario de Análisis (No) Conmutativo</span><span class="host">Seminar I help to run</span></a></li>
+        <li><a href="https://oamentornetwork.wordpress.com/resources/upcoming-conferences-and-workshops/"><span class="lnk">Upcoming conferences and workshops</span><span class="host">Operator Algebra Mentor Network</span></a></li>
+        <li><a href="https://awm-math.org/research-networks/woa/"><span class="lnk">Women in Operator Algebras</span><span class="host">AWM research network</span></a></li>
+        <li><a href="https://wis.kuleuven.be/methusalem-pure-math/home"><span class="lnk">Methusalem Project in Pure Mathematics</span><span class="host">KU Leuven</span></a></li>
+      </ul>
+    </section>
+
+    <!-- ============ RESEARCH ============ -->
+    <section id="research">
+      <h2>Research</h2><div class="rule"></div>
+
+      <figure class="figure">
+        <img class="band" src="pintura-research.jpg" alt="" onerror="this.parentNode.style.display='none'">
+        <figcaption class="credit">Título de la obra — Autor, año.</figcaption>
+      </figure>
+
+      <h3>Publications and preprints</h3>
+      <ul class="pubs">
+        <li>
+          <span class="title">A homotopy rigidity theorem for Z<sub>0</sub>-stable C*-algebras</span>
+          <span class="meta">with B. Debets and G. Szabó · Proceedings of the Royal Society of Edinburgh Section A —
+            <a href="https://www.cambridge.org/core/journals/proceedings-of-the-royal-society-of-edinburgh-section-a-mathematics/article/homotopy-rigidity-theorem-for-z0stable-calgebras/21CCAD00C798A721FA63296B109EBE4F">journal</a>,
+            <a href="https://arxiv.org/abs/2505.04857">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">Tracially complete C*-algebras</span>
+          <span class="meta">with J. Carrión, S. Evington, J. Gabe, C. Schafhauser, A. Tikuisis and S. White · accepted, Memoirs of the American Mathematical Society —
+            <a href="https://arxiv.org/abs/2310.20594">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">On topologically zero-dimensional morphisms</span>
+          <span class="meta">with R. Neagu · Journal of Functional Analysis 286 (9), 110368 —
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0022123624000569">journal</a>,
+            <a href="https://arxiv.org/abs/2307.09053">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">On tracial Z-stability of simple non-unital C*-algebras</span>
+          <span class="meta">with K. Li and G. Szabó · Canadian Journal of Mathematics, to appear —
+            <a href="https://doi.org/10.4153/S0008414X23000202">journal</a>,
+            <a href="https://arxiv.org/abs/2108.08742">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">Stabilising uniform property Gamma</span>
+          <span class="meta">with S. Evington · Proceedings of the American Mathematical Society 149 (2021), 4725–4737 —
+            <a href="https://www.ams.org/journals/proc/0000-000-00/S0002-9939-2021-15553-6/">journal</a>,
+            <a href="https://arxiv.org/abs/2010.05792">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">Nuclear dimension of simple C*-algebras</span>
+          <span class="meta">with S. Evington, A. Tikuisis, S. White and W. Winter · Inventiones Mathematicae 224 (2021), 245–290 —
+            <a href="https://link.springer.com/article/10.1007/s00222-020-01013-1">journal</a>,
+            <a href="https://arxiv.org/abs/1901.05853">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">Uniform property Gamma</span>
+          <span class="meta">with S. Evington, A. Tikuisis and S. White · International Mathematics Research Notices 2022 (13), 9864–9908 —
+            <a href="https://doi.org/10.1093/imrn/rnaa282">journal</a>,
+            <a href="http://arxiv.org/abs/1912.04207">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">Classifying maps into uniform tracial sequence algebras</span>
+          <span class="meta">with S. Evington, A. Tikuisis and S. White · Münster Journal of Mathematics 14 (2021), 265–281 —
+            <a href="https://www.uni-muenster.de/FB10/mjm/vol_14/mjm_vol_14_10.pdf">journal</a>,
+            <a href="https://arxiv.org/abs/2006.04485">arXiv</a>
+            · <a href="https://www.uni-muenster.de/FB10/mjm/vol_16/mjm_vol_16_11.pdf">erratum</a>, Münster J. Math. 16 (2023), 489–490</span>
+        </li>
+        <li>
+          <span class="title">Nuclear dimension of simple stably projectionless C*-algebras</span>
+          <span class="meta">with S. Evington · Analysis &amp; PDE 13-7 (2020), 2205–2240 —
+            <a href="https://msp.org/apde/2020/13-7/p07.xhtml">journal</a>,
+            <a href="https://arxiv.org/abs/1901.11441">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">C*-algebras and their nuclear dimension</span>
+          <span class="meta">Contemporary Mathematics 775 (2021), 41–64 —
+            <a href="https://doi.org/10.1090/conm/775/15588">journal</a>,
+            <a href="https://arxiv.org/abs/1810.04235">arXiv</a></span>
+        </li>
+        <li>
+          <span class="title">Decomposable approximations and approximately finite C*-algebras</span>
+          <span class="meta">Mathematical Proceedings of the Cambridge Philosophical Society 162 (1) (2017), 1–12 —
+            <a href="https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/decomposable-approximations-and-approximately-finite-dimensional-calgebras/D3AF6C000CCABC3D49C4EFB0F2A1BDA2">journal</a>,
+            <a href="https://arxiv.org/abs/1409.7304">arXiv</a></span>
+        </li>
+      </ul>
+
+      <h3>In preparation</h3>
+      <ul class="plain">
+        <li>Coloured equivalence of C*-algebras <span class="where">— with J. Gabe, A. Tikuisis and S. White. Preprint available on request.</span></li>
+        <li>Coloured classification of simple Z-stable C*-algebras</li>
+      </ul>
+
+      <h3>Theses</h3>
+      <ul class="plain">
+        <li><a href="http://theses.gla.ac.uk/7650/">Decomposable approximations and coloured equivalence of C*-algebras</a> <span class="where">— PhD thesis, University of Glasgow, 2016</span></li>
+        <li>The topological algebra L(X) and subnormed spaces <span class="where">— BSc thesis (in Spanish), UNAM, 2010</span></li>
+      </ul>
+
+      <h3>Talks</h3>
+      <details>
+        <summary>Selected talks, 2014–2022</summary>
+        <ul class="talks">
+          <li>The non-unital Toms–Winter conjecture. <span class="where">Barcelona–Kiel Operator Algebra Seminar, May 2022.</span></li>
+          <li>What is a C*-algebra? <span class="where">IMCU Colloquium, UNAM, April 2022.</span></li>
+          <li>VI Latin American Congress of Mathematicians. <span class="where">Uruguay, 2021.</span></li>
+          <li>8th European Congress of Mathematics. <span class="where">Slovenia, 2021.</span></li>
+          <li>Property Gamma on von Neumann algebras and C*-algebras. <span class="where">Noncommutative Harmonic Analysis, ICMAT–UAM, 2021.</span></li>
+          <li>Property Gamma. <span class="where">Quantum Symmetries Student Seminar, Ohio State University, 2020.</span></li>
+          <li>Stabilising uniform property Gamma. <span class="where">Operator Algebra and Noncommutative Geometry Seminar, University of Wollongong, 2020.</span></li>
+          <li>The Toms–Winter conjecture. <span class="where">Functional Analysis Seminar, Université de Franche-Comté, 2020.</span></li>
+          <li>VI Latin American Congress of Mathematicians. <span class="where">Uruguay, 2020.</span></li>
+          <li>Uniform property Gamma. <span class="where">Functional Analysis Seminar, University of Oxford, 2020.</span></li>
+          <li>The Toms–Winter conjecture. <span class="where">Functional Analysis Seminar, IMPAN, 2020.</span></li>
+          <li>Spring Program on Operator Algebras. <span class="where">East China Normal University, 2020.</span></li>
+          <li>Noncommutative Choquet–de Leeuw theorem. <span class="where">Working seminar, IMPAN, 2020.</span></li>
+          <li>Regularity properties of nuclear C*-algebras. <span class="where">East Coast Operator Algebras Symposium, Ohio State University, 2019.</span></li>
+          <li>Applications of CPoU and uniform property Gamma. <span class="where">Topology and Measure in Dynamics and Operator Algebras, BIRS, 2019.</span></li>
+          <li>Nuclear dimension of Z-stable C*-algebras. <span class="where">Operator Algebras Seminar, IMJ-PRG, 2019.</span></li>
+          <li>An introduction to the Elliott intertwining. <span class="where">Operator Algebra Working Seminar, KU Leuven, 2019.</span></li>
+          <li>The Toms–Winter conjecture. <span class="where">Ring Theory Seminar, Universitat Autònoma de Barcelona, 2018.</span></li>
+          <li>Classification of strict closures. <span class="where">Operator Algebra Working Seminar, KU Leuven, 2018.</span></li>
+          <li>A noncommutative topological dimension. <span class="where">Methusalem Symposium, KU Leuven, 2018.</span></li>
+          <li>Classification of strict closures. <span class="where">Analysis Seminar, University of Glasgow, 2018.</span></li>
+          <li>A noncommutative topological dimension. <span class="where">Casa Matemática Oaxaca, BIRS, 2018.</span></li>
+          <li>Structure and classification of C*-algebras. <span class="where">Methusalem Colloquia, KU Leuven, 2018.</span></li>
+          <li>The Toms–Winter conjecture. <span class="where">Operator Algebras Seminar, KU Leuven, 2017.</span></li>
+          <li>Partitions of unity and the Toms–Winter conjecture. <span class="where">Applications of the UCT for C*-algebras, University of Copenhagen, 2017.</span></li>
+          <li>An invitation to operator algebras. <span class="where">Mathematical Colloquium of Oaxaca, UNAM, 2017.</span></li>
+          <li>An invitation to operator algebras. <span class="where">Analysis Seminar, Technological University of the Mixteca, 2017.</span></li>
+          <li>Constructing order zero maps. <span class="where">Young Mathematicians in C*-algebras, University of Copenhagen, 2017.</span></li>
+          <li>Coloured isomorphic C*-algebras. <span class="where">Workshop on C*-algebras and Dynamical Systems, CRM, UAB, 2017.</span></li>
+          <li>Coloured isomorphisms of C*-algebras. <span class="where">Operator Algebras Seminar, KU Leuven, 2017.</span></li>
+          <li>Colours and order zero maps. <span class="where">Young Functional Analysts' Workshop, Queen's University Belfast, 2016.</span></li>
+          <li>Colouring C*-algebras. <span class="where">Scottish Operator Algebras Seminar, University of Aberdeen, 2016.</span></li>
+          <li>Coloured equivalence of C*-algebras. <span class="where">Analysis Seminar, University of Newcastle, 2016.</span></li>
+          <li>Nuclear C*-algebras and coloured equivalence. <span class="where">KU Leuven, 2016.</span></li>
+          <li>Coloured equivalence of C*-algebras. <span class="where">Kleines Seminar, University of Münster, 2015.</span></li>
+          <li>Coloured classification of C*-algebras. <span class="where">Young Mathematicians in C*-algebras, University of Copenhagen, 2015.</span></li>
+          <li>Classification of AF-algebras. <span class="where">University of Glasgow, 2015.</span></li>
+          <li>Covering dimension. <span class="where">University of Glasgow, 2014.</span></li>
+          <li>Decomposable approximations and nuclear dimension at most omega. <span class="where">CSTAR, University of Glasgow, 2014.</span></li>
+          <li>The Jones polynomial. <span class="where">University of Glasgow, 2014.</span></li>
+          <li>Decomposable approximations and approximately finite C*-algebras. <span class="where">Young Functional Analysts' Workshop, Lancaster University, 2014.</span></li>
+          <li>Non-smooth analysis. <span class="where">University of Glasgow, 2014.</span></li>
+        </ul>
+      </details>
+    </section>
+
+    <!-- ============ TEACHING ============ -->
+    <section id="teaching">
+      <h2>Teaching</h2><div class="rule"></div>
+
+      <figure class="figure">
+        <img class="band" src="pintura-teaching.jpg" alt="" onerror="this.parentNode.style.display='none'">
+        <figcaption class="credit">Título de la obra — Autor, año.</figcaption>
+      </figure>
+
+      <h3>Courses</h3>
+      <dl class="years">
+        <div class="yr"><dt>2026–2027</dt><dd><ul>
+          <li>C*-algebras <span class="where">(UAEM)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2025–2026</dt><dd><ul>
+          <li>Quantum graphs <span class="where">(UCIM–UNAM)</span></li>
+          <li>Functional analysis <span class="where">(UAEM)</span></li>
+          <li>Dixmier–Douady classification <span class="where">(UCIM–UNAM)</span></li>
+          <li>Selected topics in analysis <span class="where">(UAEM)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2024–2025</dt><dd><ul>
+          <li>C*-algebras <span class="where">(UCIM–UNAM)</span></li>
+          <li>Crossed products II <span class="where">(UCIM–UNAM)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2023–2024</dt><dd><ul>
+          <li>Crossed products <span class="where">(UCIM–UNAM)</span></li>
+          <li>Introduction to von Neumann algebras <span class="where">(UNAM)</span></li>
+          <li>Real analysis <span class="where">(UCIM–UNAM)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2022–2023</dt><dd><ul>
+          <li>Introduction to operator algebras <span class="where">(UNAM)</span></li>
+          <li>C*-algebras <span class="where">(UCIM–UNAM)</span></li>
+          <li>Differential geometry <span class="where">(UAEM)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2018–2019</dt><dd><ul>
+          <li>Selected topics in mathematics — <a href="https://drive.google.com/file/d/1Ja1ZVMCDMT46UkI-A8utZuQMM1Uy6yIi/view?usp=sharing">lecture notes</a></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2017–2018</dt><dd><ul>
+          <li>Structure and classification of C*-algebras <span class="where">(Methusalem mini-course)</span></li>
+        </ul></dd></div>
+      </dl>
+
+      <details>
+        <summary>Earlier courses, 2009–2017</summary>
+        <dl class="years" style="margin-top:10px">
+          <div class="yr"><dt>2016–2017</dt><dd><ul><li>Complex analysis <span class="where">(KULAK)</span></li></ul></dd></div>
+          <div class="yr"><dt>2014–2016</dt><dd><ul>
+            <li>Maths 1R, Maths 1S <span class="where">(University of Glasgow)</span></li>
+            <li>Maths 2C — Applied mathematics</li>
+            <li>Maths 2D — Advanced topics in linear algebra and calculus</li>
+            <li>Maths 2F — Foundations of pure mathematics</li>
+          </ul></dd></div>
+          <div class="yr"><dt>2013–2014</dt><dd><ul>
+            <li>Maths 2A — Multivariable calculus <span class="where">(University of Glasgow)</span></li>
+            <li>Maths 2B — Linear algebra</li>
+            <li>Maths 2D — Advanced topics in linear algebra and calculus</li>
+            <li>Maths 2E — Introduction to real analysis</li>
+          </ul></dd></div>
+          <div class="yr"><dt>2011–2012</dt><dd><ul>
+            <li>Advanced analysis II <span class="where">(UNAM)</span></li>
+            <li>Real analysis</li>
+            <li>Complex analysis</li>
+          </ul></dd></div>
+          <div class="yr"><dt>2010–2011</dt><dd><ul>
+            <li>Advanced analysis I <span class="where">(UNAM)</span></li>
+            <li>Multivariable calculus I and II</li>
+            <li>Functional analysis</li>
+          </ul></dd></div>
+          <div class="yr"><dt>2009–2010</dt><dd><ul>
+            <li>Calculus I and II <span class="where">(UNAM)</span></li>
+          </ul></dd></div>
+        </dl>
+      </details>
+
+      <h3>Supervision</h3>
+      <dl class="years">
+        <div class="yr"><dt>2026</dt><dd><ul>
+          <li>Kohei Miyazaki <span class="where">(PhD)</span></li>
+          <li>Erick Escalante <span class="where">(BSc)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2024–2026</dt><dd><ul>
+          <li>Ramsés Alejandro García Abascal Ruíz <span class="where">(MSc)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2023–2024</dt><dd><ul>
+          <li>Ramsés Alejandro García Abascal Ruíz <span class="where">(BSc)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2018–2019</dt><dd><ul>
+          <li>Bram Vancreynest <span class="where">(MSc)</span></li>
+        </ul></dd></div>
+        <div class="yr"><dt>2017–2018</dt><dd><ul>
+          <li>Lies Vanhaecht and Pieter Jan Houben <span class="where">(BSc)</span></li>
+          <li>Hannah Andries and Aaron Van Poecke <span class="where">(BSc)</span></li>
+        </ul></dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ EVENTS ============ -->
+    <section id="events">
+      <h2>Events</h2><div class="rule"></div>
+
+      <figure class="figure">
+        <img class="band" src="pintura-events.jpg" alt="" onerror="this.parentNode.style.display='none'">
+        <figcaption class="credit">Título de la obra — Autor, año.</figcaption>
+      </figure>
+
+      <p>Conferences, workshops and schools I have organised or taken part in.</p>
+
+      <ul class="plain">
+        <li><a href="https://www-fourier.univ-grenoble-alpes.fr/~py/strong-cv-unam-2026.html">Strong convergence, random matrices and discrete subgroups of Lie groups</a> <span class="where">— IM-UNAM</span></li>
+        <li><a href="https://indico.math.cnrs.fr/category/784/">Operator algebras: approximation, rigidity and dynamics</a> <span class="where">— Institut Henri Poincaré</span></li>
+        <li><a href="https://www.matcuer.unam.mx/ResearchSchool/index.html">Second Research School in Geometry at Cuernavaca</a> <span class="where">— UCIM-UNAM</span></li>
+        <li><a href="https://sites.google.com/cimat.mx/sima-2025">Seminario Interinstitucional de Matrices Aleatorias 2025</a> <span class="where">— CIMAT, Mexico</span></li>
+        <li><a href="https://silva.iimas.unam.mx/jointmath2025/index.html">A Joint Meeting The Americas–Europe: Functional Analysis and Differential Equations</a> <span class="where">— UNAM, August 2025</span></li>
+        <li><a href="https://www.birs.ca/events/2025/5-day-workshops/25w5440">Free Probability, Random Matrices and Finite-Dimensional Approximations</a> <span class="where">— Casa Matemática Oaxaca, June 2025</span></li>
+        <li><a href="https://faculty.tcu.edu/jcarrion/CBMS-2025.html">NSF/CBMS Regional Conference: Classifying amenable operator algebras</a> <span class="where">— Texas Christian University, June 2025</span></li>
+        <li><a href="https://www.matcuer.unam.mx/EscuelaInvierno/">Escuela de Invierno en Matemáticas</a> <span class="where">— UCIM-UNAM, November 2024</span></li>
+        <li><a href="http://hannesthiel.org/ncn-2024-mikaelfest">Noncommutativity in the North — MikaelFest</a> <span class="where">— Chalmers and University of Gothenburg, June 2024</span></li>
+      </ul>
+
+      <details>
+        <summary>Earlier events, 2017–2023</summary>
+        <ul class="plain" style="margin-top:12px">
+          <li><a href="http://www.fields.utoronto.ca/activities/23-24/tensor">Twinned Conference on C*-algebras and Tensor Categories</a> <span class="where">— Fields Institute, November 2023</span></li>
+          <li><a href="https://www.smm.org.mx/congreso">56 Congreso Nacional de la Sociedad Matemática Mexicana</a> <span class="where">— UASLP, October 2023</span></li>
+          <li><a href="https://math.unl.edu/howard-rowlee-lecture-2023">Rowlee Workshop</a> <span class="where">— University of Nebraska</span></li>
+          <li><a href="https://clam2021.cmat.edu.uy/">VI Latin American Congress of Mathematicians</a> <span class="where">— Uruguay, September 2021</span></li>
+          <li><a href="http://hannesthiel.org/workshop-2021-cuntz-semigroups">Cuntz semigroups</a> <span class="where">— University of Münster, July 2021</span></li>
+          <li><a href="https://8ecm.si/">8th European Congress of Mathematics</a> <span class="where">— Slovenia, June 2021</span></li>
+          <li><a href="https://conferences.cirm-math.fr/2435.html">Measured and Geometric Group Theory, Rigidity, Operator Algebras</a> <span class="where">— CIRM, October 2020</span></li>
+          <li>The 48th Canadian Operator Symposium <span class="where">— Fields Institute, May 2020</span></li>
+          <li><a href="https://clam2020.cmat.edu.uy/">VI Latin American Congress of Mathematicians</a> <span class="where">— Uruguay, July 2020</span></li>
+          <li><a href="http://math.ecnu.edu.cn/RCOA/events/2020%20Spring%20Operator%20Algebras%20Program/2020SOAP.html">Spring Program on Operator Algebras</a> <span class="where">— East China Normal University, 2020</span></li>
+          <li><a href="https://www.impan.pl/en/activities/banach-center/conferences/19-cartan">Cartan C*-Subalgebras and Noncommutative Dynamics</a> <span class="where">— IMPAN, November 2019</span></li>
+          <li><a href="https://people.math.osu.edu/penneys.2/ECOAS2019.html">East Coast Operator Algebras Symposium</a> <span class="where">— Ohio State University, October 2019</span></li>
+          <li><a href="http://www.birs.ca/events/2019/5-day-workshops/19w5073">Topology and Measure in Dynamics and Operator Algebras</a> <span class="where">— BIRS, September 2019</span></li>
+          <li><a href="https://www.math.ku.dk/english/research/conferences/2019/ymcstara2019/">Young Mathematicians in C*-algebras</a> <span class="where">— Copenhagen, August 2019</span></li>
+          <li><a href="https://indico.math.cnrs.fr/event/4214/">Operator algebra conference in memory of Étienne Blanchard</a> <span class="where">— Université Paris Diderot, April 2019</span></li>
+          <li><a href="http://www.crm.cat/en/Activities/Curs_2018-2019/Pages/WK_Barcelona_Weekend_OA.aspx">Barcelona Weekend in Operator Algebras</a> <span class="where">— CRM, November 2018</span></li>
+          <li><a href="http://wis.kuleuven.be/events/ymca2018">Young Women in C*-algebras and Young Mathematicians in C*-algebras</a> <span class="where">— KU Leuven, August 2018</span></li>
+          <li><a href="http://www.birs.ca/events/2018/5-day-workshops/18w5142">Mexican Mathematicians in the World</a> <span class="where">— CMO-BIRS, June 2018</span></li>
+          <li><a href="https://ivv5hpp.uni-muenster.de/u/wwinter/wwinter/NCGOA.html">NCGOA 2018: C*-algebras and Dynamics</a> <span class="where">— Münster, May 2018</span></li>
+          <li><a href="http://www.math.ku.dk/english/research/conferences/2017/uct/">Applications of the UCT for C*-algebras</a> <span class="where">— University of Copenhagen, October 2017</span></li>
+          <li><a href="http://www.math.ku.dk/english/research/conferences/2017/ymcstara2017/">Young Mathematicians in C*-algebras</a> <span class="where">— University of Copenhagen, August 2017</span></li>
+          <li><a href="https://sites.google.com/site/vnalg2017ihp/">Von Neumann algebras and measured group theory</a> <span class="where">— Institut Henri Poincaré, July 2017</span></li>
+          <li><a href="http://www.crm.cat/en/Activities/Curs_2016-2017/Pages/IRP-OAL.aspx">Operator Algebras: Dynamics and Interactions</a> <span class="where">— CRM, Barcelona, March 2017</span></li>
+          <li><a href="https://sites.google.com/site/yfawuk/">Young Functional Analysts' Workshop</a> <span class="where">— Glasgow, March 2017</span></li>
+        </ul>
+      </details>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Marca en la navegación la sección visible.
+  const links = [...document.querySelectorAll('nav a')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('current'));
+        map.get(e.target.id)?.classList.add('current');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('section').forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
