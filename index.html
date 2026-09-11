@@ -6,6 +6,7 @@
 <title>Jorge Castillejos</title>
 <meta name="description" content="Jorge Castillejos — Research Associate Professor, Institute of Mathematics (Unidad Cuernavaca), UNAM. Operator algebras and the classification of C*-algebras.">
 <link rel="canonical" href="https://jorge-castillejos.github.io/">
+<link rel="icon" href="canti.jpg">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://jorge-castillejos.github.io/">
 <meta property="og:title" content="Jorge Castillejos">
@@ -68,6 +69,15 @@
     min-height:100vh;
     display:flex;
     flex-direction:column;
+  }
+
+  .logo{
+    display:block;
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:22px;
   }
 
   .name{
@@ -367,6 +377,8 @@
 <div class="shell">
 
   <aside class="side">
+    <img class="logo" src="canti.jpg" alt="" onerror="this.style.display='none'">
+
     <h1 class="name"><span>Jorge</span><span>Castillejos</span></h1>
 
     <p class="affil">Research Associate Professor,
@@ -699,8 +711,8 @@
   const art = {
     about:    { src:"JC.jpg",     cap:"",                       hue:"#2B5F75" },
     research: { src:"siq.jpg",    cap:"David Alfaro Siqueiros", hue:"#7A3B5E" },
-    teaching: { src:"canti.jpg",  cap:"Cantinflas",             hue:"#3A6B4A" },
-    events:   { src:"negroc.jpg", cap:"Negro cósmico",          hue:"#57499B" }
+    teaching: { src:"negroc.jpg", cap:"Negro cósmico",          hue:"#3A6B4A" },
+    events:   { src:"jc2.jpg",    cap:"",                       hue:"#57499B" }
   };
 
   const links  = [...document.querySelectorAll('nav a')];
