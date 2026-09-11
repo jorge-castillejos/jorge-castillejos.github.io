@@ -172,14 +172,15 @@
   h3:first-of-type{margin-top:34px}
 
   /* pinturas: banda por sección */
-  .figure{margin:0 0 32px}
+  .figure{margin:0 0 32px;display:table}
+  .figure .credit{display:table-caption;caption-side:bottom}
   .band{
     display:block;
-    width:100%;
-    height:clamp(130px,19vw,185px);
-    object-fit:cover;
-    object-position:center;
-    background:var(--rule-soft);
+    max-width:100%;
+    max-height:430px;
+    width:auto;
+    height:auto;
+    border:1px solid var(--rule);
   }
   .credit{
     display:block;
@@ -203,9 +204,8 @@
   .about-top img{
     display:block;
     width:100%;
-    aspect-ratio:4/5;
-    object-fit:cover;
-    background:var(--rule-soft);
+    height:auto;
+    border:1px solid var(--rule);
   }
   .about-top .lede{margin-top:-6px}
 
